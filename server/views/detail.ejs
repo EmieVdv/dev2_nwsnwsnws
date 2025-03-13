@@ -1,3 +1,13 @@
 <h2><%= article.title %></h2>
 <p><strong>Datum:</strong> <%= article.created_at %></p>
 <p><%= article.content %></p>
+
+
+<% if( commentsWithID.length === 0 ) { %>
+    <p>Er zijn nog geen reacties toegevoegd</p>
+  <% } else { %>
+      <% commentsWithID.forEach((item) => { %>
+          <h2><%= item.author %></h2>
+          <p><%= item.comment %></p>
+      <% }) %>
+  <% } %>

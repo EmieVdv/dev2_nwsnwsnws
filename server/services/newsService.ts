@@ -3,7 +3,7 @@ import sql from "./db";
 
 // Interface voor een nieuwsartikel
 export interface News {
-  id?: number;          
+  id: number;          
   slug?: string;
   title: string;
   content?: string;
@@ -24,10 +24,10 @@ export async function getAllNews(): Promise<News[]> {
 }
 
 //Nieuwsartikelen op basis van slug
-export async function getNewsBySlug(slug: string): Promise<News[]> {
+export async function getNewsBySlug(slug: string): Promise<News> {
   try {
     const data : News[] = await sql`select * from news where slug LIKE ${'%' + slug + '%'} `;
-    return data;
+    return data[0];
     
   } catch (error) {
     console.error('Error fetching news:', error);

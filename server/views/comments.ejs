@@ -1,0 +1,10 @@
+<h1><%= title %></h1>
+
+<% if( comments.length === 0 ) { %>
+  <p>Er is geen nieuws beschikbaar</p>
+<% } else { %>
+    <% comments.forEach((item) => { %>
+        <h2><%= item.author %></h2>
+        <p><%= item.comment %></p>
+    <% }) %>
+<% } %>
